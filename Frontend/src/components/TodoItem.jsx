@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
+import { API_BASE_URL } from '../conig';
 
 const TodoItem = ({ todo, onDelete }) => {
+  const API_URL = API_BASE_URL;
+
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${todo.id}`);
+      await axios.delete(`${API_URL}/api/todos/${todo.id}`);
       onDelete(todo.id);
     } catch (err) {
       console.error('Error deleting todo:', err);

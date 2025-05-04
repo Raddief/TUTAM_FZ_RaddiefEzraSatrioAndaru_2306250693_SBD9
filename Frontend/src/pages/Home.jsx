@@ -3,16 +3,18 @@ import axios from 'axios';
 import TodoForm from '../components/TodoForm';
 import TodoItem from '../components/TodoItem';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_BASE_URL } from '../config';
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const API_URL = API_BASE_URL;
 
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/todos');
+        const response = await axios.get(`${API_URL}/api/todos`);
         setTodos(response.data);
       } catch (err) {
         setError('Failed to load todos');
@@ -22,7 +24,7 @@ export default function Home() {
       }
     };
     fetchTodos();
-  }, []);
+  }, [API_URL]);
 
   const handleAddTodo = (newTodo) => {
     setTodos([newTodo, ...todos]);
@@ -49,7 +51,7 @@ export default function Home() {
           <p className="text-2xl text-center text-red-500 py-8">{error}</p>
         ) : todos.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-xl shadow-lg">
-            <p className="text-2xl text-gray-500"> Belum ada task, silahkan tambah :)</p>
+            <p className="text-2xl text-gray-500">Belum ada task, silahkan tambah :)</p>
           </div>
         ) : (
           <AnimatePresence>

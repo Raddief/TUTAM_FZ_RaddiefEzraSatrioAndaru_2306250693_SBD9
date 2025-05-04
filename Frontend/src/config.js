@@ -1,0 +1,1 @@
+export const API_BASE_URL = "https://tutam9-raddiefezrasatrioandaru-backend.vercel.app";

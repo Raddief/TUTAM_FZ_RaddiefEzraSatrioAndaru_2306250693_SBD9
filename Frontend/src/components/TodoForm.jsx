@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default function TodoForm({ onAdd }) {
   const [title, setTitle] = useState('');
+  const API_URL = API_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim()) return;
     
     try {
-      const response = await axios.post('http://localhost:5000/api/todos', { title });
+      const response = await axios.post(`${API_URL}/api/todos`, { title });
       onAdd(response.data);
       setTitle('');
     } catch (err) {

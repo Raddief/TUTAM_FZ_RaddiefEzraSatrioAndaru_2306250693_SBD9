@@ -11,12 +11,28 @@ const pool = new Pool({
   }
 });
 
+// Add connection testing and error logging
 pool.on('connect', () => {
   console.log('Connected to PostgreSQL database');
 });
 
 pool.on('error', (err) => {
-  console.error('PostgreSQL pool error:', err);
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
 });
+
+// Test the connection
+const testConnection = async () => {
+  try {
+    const client = await pool.connect();
+    console.log('Database connection successful');
+    client.release();
+  } catch (err) {
+    console.error('Database connection error:', err.message);
+    console.error('Connection string:', process.env.PG_CONNECTION_STRING);
+  }
+};
+
+testConnection();
 
 export default pool;

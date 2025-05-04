@@ -17,5 +17,8 @@
           "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
         }
       }
-    ]
+    ],
+    "env": {
+      "PG_CONNECTION_STRING": "@pg_connection_string"
+    }
 }

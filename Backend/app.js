@@ -14,8 +14,7 @@ app.use(cors({
     'https://tutam9-raddiefezrasatrioandaru.vercel.app',
     'http://localhost:5173'
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
+  methods: ['GET', 'POST', 'DELETE']
 }));
 
 app.use(express.json());

@@ -14,11 +14,17 @@ export default function Home() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
+        console.log('Attempting to fetch todos from:', `${API_URL}/api/todos`);
         const response = await axios.get(`${API_URL}/api/todos`);
+        console.log('Response received:', response.data);
         setTodos(response.data);
       } catch (err) {
-        setError('Failed to load todos');
-        console.error('Error fetching todos:', err);
+        console.error('Detailed error:', {
+          message: err.message,
+          response: err.response,
+          request: err.request
+        });
+        setError(`Failed to load todos: ${err.message}`);
       } finally {
         setIsLoading(false);
       }

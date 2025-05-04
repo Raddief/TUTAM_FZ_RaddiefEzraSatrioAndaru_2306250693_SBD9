@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { API_BASE_URL } from '../conig';
+import { API_BASE_URL } from '../config';
 
 const TodoItem = ({ todo, onDelete }) => {
   const API_URL = API_BASE_URL;

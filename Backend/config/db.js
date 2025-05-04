@@ -11,9 +11,12 @@ const pool = new Pool({
   }
 });
 
-// Test connection
-pool.query('SELECT NOW()')
-  .then(() => console.log('✅ Connected to PostgreSQL'))
-  .catch(err => console.error('❌ Connection error', err.stack));
+pool.on('connect', () => {
+  console.log('Connected to PostgreSQL database');
+});
+
+pool.on('error', (err) => {
+  console.error('PostgreSQL pool error:', err);
+});
 
 export default pool;

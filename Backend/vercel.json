@@ -10,7 +10,12 @@
       {
         "src": "/(.*)",
         "dest": "app.js",
-        "methods": ["GET", "POST", "DELETE", "OPTIONS"]
+        "methods": ["GET", "POST", "DELETE", "OPTIONS"],
+        "headers": {
+          "Access-Control-Allow-Origin": "https://tutam9-raddiefezrasatrioandaru.vercel.app",
+          "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+        }
       }
     ]
-  }
+}

@@ -3,13 +3,13 @@ import axios from 'axios';
 import TodoForm from '../components/TodoForm';
 import TodoItem from '../components/TodoItem';
 import { motion, AnimatePresence } from 'framer-motion';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config/config';
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const API_URL = API_BASE_URL;
+  const API_URL = import.meta.env.VITE_API_URL || API_BASE_URL;
 
   useEffect(() => {
     const fetchTodos = async () => {

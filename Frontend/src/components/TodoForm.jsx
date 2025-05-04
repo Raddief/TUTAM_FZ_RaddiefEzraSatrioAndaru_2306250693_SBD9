@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config/config';
 
 export default function TodoForm({ onAdd }) {
   const [title, setTitle] = useState('');
-  const API_URL = API_BASE_URL;
+  const API_URL = import.meta.env.VITE_API_URL || API_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

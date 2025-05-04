@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config/config';
 
 const TodoItem = ({ todo, onDelete }) => {
-  const API_URL = API_BASE_URL;
+  const API_URL = import.meta.env.VITE_API_URL || API_BASE_URL;
 
   const handleDelete = async () => {
     try {

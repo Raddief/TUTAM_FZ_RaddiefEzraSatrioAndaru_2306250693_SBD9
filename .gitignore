@@ -1,0 +1,13 @@
+# Ignore semua node_modules
+**/node_modules/
+
+# Environment files
+**/.env
+**/.env.local
+
+# Build files
+frontend/dist/
+backend/logs/
+
+# System files
+.DS_Store
